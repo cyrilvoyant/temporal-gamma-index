@@ -1,17 +1,38 @@
 cff-version: 1.2.0
 title: "Temporal Gamma Index for Time Series Forecast Evaluation"
-message: "If you use this software, please cite it as below."
+message: "If you use this software, please cite it as below. In academic work, please also cite the companion manuscript (see preferred-citation) once published."
+type: software
 authors:
   - family-names: Voyant
     given-names: Cyril
-orcid: "https://orcid.org/0000-0003-0242-7377"
+    website: "https://person.cyrilvoyant.com"
+    orcid: "https://orcid.org/0000-0003-0242-7377"
+repository-code: "https://github.com/cyrilvoyant/temporal-gamma-index"
 version: 1.0.0
 date-released: 2026-01-28
 license: MIT
+abstract: >
+  MATLAB implementation of a tolerance-based, 3D Gamma Index framework for
+  validating gridded spatio-temporal forecasts (solar irradiance, and more
+  generally any gridded variable), adapting a method from radiotherapy dose
+  verification (Low et al., 1998) to the double-penalty problem: classical
+  pixel-wise scores such as RMSE/MAE over-penalize forecasts that are
+  structurally correct but slightly displaced in space or time.
 keywords:
   - gamma index
-  - time series forecasting
+  - spatial verification
   - forecast verification
+  - double penalty
+  - gamma pass rate
+  - time series forecasting
   - solar energy
+  - solar irradiance
   - renewable energy
   - forecast metrics
+preferred-citation:
+  type: unpublished
+  title: "A Tolerance-Based Framework for Spatio-Temporal Forecast Validation Using the Gamma-Index"
+  authors:
+    - name: "[anonymized for peer review]"
+  year: 2026
+  notes: "Preprint submitted to an Elsevier journal; under peer review. Update this entry with the final author list, journal, and DOI once published."

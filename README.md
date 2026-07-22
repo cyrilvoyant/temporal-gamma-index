@@ -1,6 +1,6 @@
 # Gamma Index Evaluation for Solar Irradiance Forecasts
 
-A MATLAB implementation for evaluating solar irradiance forecast accuracy using the 3D Gamma Index method with spatial (DTA), temporal (TTA), and intensity (IDT) tolerance criteria. This repository implements a temporal adaptation of the gamma index, originally developed for radiotherapy quality assurance, to evaluate time series forecasts under joint amplitude and temporal tolerances. The method is designed for renewable energy forecasting applications (solar, wind, load), where timing errors and magnitude errors must be assessed simultaneously.
+A MATLAB implementation of a **tolerance-based, 3D Gamma Index framework** for validating gridded (spatio-temporal) forecasts, adapting a method originally developed for radiotherapy dose verification (Low et al., 1998) to the double-penalty problem in map forecast verification: classical pixel-wise scores such as RMSE/MAE over-penalize forecasts that are structurally correct but slightly displaced in space or time. The Gamma Index instead asks whether a prediction falls within explicit physical tolerances — spatial (DTA), temporal (TTA), and intensity (IDT) — of *some* nearby observation, rather than the exact same pixel at the exact same instant. Companion code for the manuscript "A Tolerance-Based Framework for Spatio-Temporal Forecast Validation Using the Γ-Index" (see [`Gamma_Index_Cyril_Voyant.pdf`](Gamma_Index_Cyril_Voyant.pdf), currently anonymized for peer review — see [Citation](#citation)).
 
 ## Overview
 
@@ -8,24 +8,27 @@ This package implements a comprehensive Gamma Index analysis tool specifically d
 
 ### What is the Gamma Index?
 
-The Gamma Index (γ) is a composite metric that evaluates how well a prediction matches measurements by searching for the closest match within defined tolerance criteria:
+The Gamma Index (Γ) is a composite metric that evaluates how well a prediction matches measurements by searching for the closest match within defined tolerance criteria:
 
 - **DTA (Distance-To-Agreement)**: Spatial tolerance in kilometers
 - **TTA (Time-To-Agreement)**: Temporal tolerance in minutes  
 - **IDT (Intensity Deviation Tolerance)**: Allowable intensity difference in W/m²
 
-For each predicted pixel, the algorithm searches in a 3D neighborhood (x, y, time) to find the minimum gamma value:
+For a prediction at grid coordinates $(x,y,t)$, the 3D Gamma Index is the minimum, over a spatio-temporal search neighborhood, of the normalized joint distance to the observed field:
 
-```
-γ = √[(Δx/DTA)² + (Δy/DTA)² + (Δt/TTA)² + (ΔI/IDT)²]
-```
+$$\Gamma(x,y,t)=\min_{(x',y',t')\in\mathcal N}\sqrt{\frac{(x-x')^2+(y-y')^2}{\mathrm{DTA}^2}+\frac{(t-t')^2}{\mathrm{TTA}^2}+\frac{\big(\mathrm{pred}(x,y,t)-\mathrm{obs}(x',y',t')\big)^2}{\mathrm{IDT}^2}}$$
 
-A pixel "passes" the test if γ ≤ 1, meaning it falls within acceptable tolerances.
+where the search neighborhood $\mathcal N$ extends slightly beyond the nominal tolerances ($\tfrac32\,\mathrm{DTA}$ spatially, $\tfrac32\,\mathrm{TTA}$ temporally) to guarantee a feasible match is found. A pixel "passes" the test if $\Gamma\le1$. Two aggregate statistics summarize the whole field:
+
+$$\mathrm{GPR}=\frac{1}{N}\sum_{i=1}^{N}\mathbb 1(\Gamma_i\le1)\times100\%,\qquad \bar\Gamma=\frac{1}{N}\sum_{i=1}^N \Gamma_i,\qquad \Gamma_{\max}=\max_i \Gamma_i$$
+
+GPR (Gamma Pass Rate) is the percentage of the field within tolerance; the mean and max Gamma complement it by quantifying how far outlier pixels fall from the acceptance boundary. Sensitivity analysis in the companion paper shows that a ±50% change in DTA, TTA, or IDT changes GPR by less than 10 percentage points and mean Γ by less than 0.3, on the HelioClim-3/Corsica dataset studied — i.e. the diagnosis is not overly sensitive to the exact tolerance choice.
 
 ## Files
 
 - **`computeGammaMetrics.m`**: Core function that calculates Gamma Index and RMSE maps
 - **`main.m`**: Example script demonstrating usage with synthetic data
+- **`Gamma_Index_Cyril_Voyant.pdf`**: Companion manuscript with the full derivation, sensitivity analysis, and the HelioClim-3/CAMS satellite validation over Corsica (see [Citation](#citation))
 - **`README.md`**: This documentation file
 
 ## Key Features
@@ -247,11 +250,15 @@ Black contour lines indicate regions where γ > 1 (failed criteria).
 
 ## Citation
 
-If you use this code in your research, please cite appropriately and reference the Gamma Index methodology from radiation therapy literature (Low et al., 1998) adapted for meteorological applications.
+If you use this code, please cite the software itself (see [`CITATION.cff`](CITATION.cff)) and, in academic work, the companion manuscript:
+
+> [Author names anonymized for peer review], "A Tolerance-Based Framework for Spatio-Temporal Forecast Validation Using the Γ-Index," preprint submitted to an Elsevier journal, 2026 (see [`Gamma_Index_Cyril_Voyant.pdf`](Gamma_Index_Cyril_Voyant.pdf)).
+
+This manuscript is currently under peer review; the reference above will be updated with the final author list, journal, and DOI once published. The Γ-Index method itself originates from radiotherapy dose verification (Low, Harms, Mutic, Purdy, 1998, *Medical Physics*).
 
 ## License
 
-This code is provided for research and educational purposes. Please respect data proprietary restrictions when using with real solar irradiance datasets.
+The **code** in this repository (`computeGammaMetrics.m`, `main.m`) is MIT-licensed — see [`LICENSE`](LICENSE). This applies to the software only: the satellite datasets used in the companion paper (HelioClim-3, CAMS Radiation Service) are third-party and not redistributed here; `main.m` uses synthetic data for exactly this reason (see [Understanding the Example](#understanding-the-example-mainm)).
 
 ## Support
 
