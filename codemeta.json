@@ -1,0 +1,25 @@
+{
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Temporal Gamma Index for Time Series Forecast Evaluation",
+  "description": "MATLAB implementation of a tolerance-based, 3D Gamma Index framework for validating gridded spatio-temporal forecasts, adapting a method from radiotherapy dose verification (Low et al., 1998) to the double-penalty problem: classical pixel-wise scores such as RMSE and MAE over-penalize forecasts that are structurally correct but slightly displaced in space or time. Reports the Gamma Pass Rate together with mean and maximum Gamma under explicit spatial (DTA), temporal (TTA) and intensity (IDT) tolerances.",
+  "version": "1.0.0",
+  "dateModified": "2026-01-28",
+  "license": "https://spdx.org/licenses/MIT",
+  "codeRepository": "https://github.com/cyrilvoyant/temporal-gamma-index",
+  "identifier": "https://doi.org/10.5281/zenodo.21755937",
+  "programmingLanguage": "MATLAB",
+  "developmentStatus": "active",
+  "applicationCategory": "Forecast verification",
+  "keywords": ["gamma index", "spatial verification", "forecast verification", "double penalty", "gamma pass rate", "time series forecasting", "solar irradiance", "renewable energy"],
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Cyril",
+      "familyName": "Voyant",
+      "@id": "https://orcid.org/0000-0003-0242-7377",
+      "url": "https://person.cyrilvoyant.com",
+      "affiliation": {"@type": "Organization", "name": "Mines Paris - PSL, Centre Observation, Impacts, Energie (O.I.E.), Sophia Antipolis, France"}
+    }
+  ]
+}
