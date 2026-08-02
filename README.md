@@ -1,5 +1,6 @@
 # Gamma Index Evaluation for Solar Irradiance Forecasts
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21755937.svg)](https://doi.org/10.5281/zenodo.21755937)
 A MATLAB implementation of a **tolerance-based, 3D Gamma Index framework** for validating gridded (spatio-temporal) forecasts, adapting a method originally developed for radiotherapy dose verification (Low et al., 1998) to the double-penalty problem in map forecast verification: classical pixel-wise scores such as RMSE/MAE over-penalize forecasts that are structurally correct but slightly displaced in space or time. The Gamma Index instead asks whether a prediction falls within explicit physical tolerances — spatial (DTA), temporal (TTA), and intensity (IDT) — of *some* nearby observation, rather than the exact same pixel at the exact same instant. Companion code for the manuscript "A Tolerance-Based Framework for Spatio-Temporal Forecast Validation Using the Γ-Index" (see [`Gamma_Index_Cyril_Voyant.pdf`](Gamma_Index_Cyril_Voyant.pdf), currently anonymized for peer review — see [Citation](#citation)).
 
 ## Overview

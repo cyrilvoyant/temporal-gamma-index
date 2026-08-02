@@ -36,3 +36,8 @@ preferred-citation:
     - name: "[anonymized for peer review]"
   year: 2026
   notes: "Preprint submitted to an Elsevier journal; under peer review. Update this entry with the final author list, journal, and DOI once published."
+
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21755937"
+    description: "Concept DOI (all versions, Zenodo)"
