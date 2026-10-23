@@ -1,0 +1,115 @@
+@prefix wsem: <https://w3id.org/websemantic/ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix qk: <http://qudt.org/vocab/quantitykind/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix : <https://cyrilvoyant.github.io/ontology/temporal-gamma-index#> .
+
+# Instances of the WebSemantic core vocabulary for temporal-gamma-index (generated 2026-10-23; documentation only).
+
+:software a wsem:Software, schema:SoftwareSourceCode ;
+    schema:name "The γ-index: tolerance-based validation of spatio-temporal forecast fields (MATLAB)" ;
+    schema:codeRepository <https://github.com/cyrilvoyant/temporal-gamma-index> ;
+    wsem:conceptDOI "https://doi.org/10.5281/zenodo.21755936" ;
+    schema:identifier <https://doi.org/10.5281/zenodo.21755936> ;
+    schema:license "MIT" ;
+    schema:programmingLanguage "MATLAB" ;
+    schema:description "Accepts a forecast point when an observation agrees within joint tolerances in space (DTA), time (TTA) and intensity (IDT)." ;
+    schema:author <https://orcid.org/0000-0003-0242-7377> ;
+    schema:citation <https://doi.org/10.1016/j.ijforecast.2026.03.002> ;
+    wsem:declaresParameter :in0 ;
+    wsem:declaresParameter :in1 ;
+    wsem:declaresParameter :in2 ;
+    wsem:declaresParameter :in3 ;
+    wsem:declaresParameter :in4 ;
+    wsem:declaresParameter :in5 ;
+    wsem:declaresParameter :in6 ;
+    wsem:declaresOutput :out0 ;
+    wsem:declaresOutput :out1 ;
+    wsem:declaresOutput :out2 ;
+    wsem:declaresOutput :out3 ;
+    wsem:declaresOutput :out4 ;
+    wsem:declaresOutput :out5 ;
+    dcterms:modified "2026-10-23" .
+
+<https://orcid.org/0000-0003-0242-7377> a schema:Person ; schema:name "Cyril Voyant" .
+:in0 a wsem:ParameterDefinition ;
+    skos:prefLabel "pred" ;
+    wsem:apiVariable "pred" ;
+    skos:definition "forecast map at one time" ;
+    wsem:canonicalUnit unit:W-PER-M2 ;
+    wsem:quantityKind qk:Irradiance .
+:in1 a wsem:ParameterDefinition ;
+    skos:prefLabel "meas" ;
+    wsem:apiVariable "meas" ;
+    skos:definition "sequence of observed maps" ;
+    wsem:canonicalUnit unit:W-PER-M2 ;
+    wsem:quantityKind qk:Irradiance .
+:in2 a wsem:ParameterDefinition ;
+    skos:prefLabel "dta" ;
+    wsem:apiVariable "dta" ;
+    skos:definition "spatial tolerance; the article uses one grid spacing (≈ 2 km)" ;
+    wsem:canonicalUnit unit:KiloM ;
+    wsem:quantityKind qk:Length .
+:in3 a wsem:ParameterDefinition ;
+    skos:prefLabel "tta" ;
+    wsem:apiVariable "tta" ;
+    skos:definition "temporal tolerance; the article uses 30 min (Δt/2 with interpolation)" ;
+    wsem:canonicalUnit unit:MIN ;
+    wsem:quantityKind qk:Time .
+:in4 a wsem:ParameterDefinition ;
+    skos:prefLabel "idt" ;
+    wsem:apiVariable "idt" ;
+    skos:definition "intensity tolerance; the article uses 50 W/m² (about 10 %)" ;
+    wsem:canonicalUnit unit:W-PER-M2 ;
+    wsem:quantityKind qk:Irradiance .
+:in5 a wsem:ParameterDefinition ;
+    skos:prefLabel "res_ini, res_end" ;
+    wsem:apiVariable "res_ini, res_end" ;
+    skos:definition "pixel size before and after rescaling (km per pixel)" ;
+    wsem:canonicalUnit unit:KiloM ;
+    wsem:quantityKind qk:Length .
+:in6 a wsem:ParameterDefinition ;
+    skos:prefLabel "timestep_ini, timestep_end" ;
+    wsem:apiVariable "timestep_ini, timestep_end" ;
+    skos:definition "time between images before and after interpolation (hours)" ;
+    wsem:canonicalUnit unit:HR ;
+    wsem:quantityKind qk:Time .
+:out0 a wsem:OutputVariable ;
+    skos:prefLabel "gammaMap" ;
+    wsem:apiVariable "gammaMap" ;
+    skos:definition "minimum γ per pixel" ;
+    wsem:canonicalUnit unit:UNITLESS ;
+    wsem:quantityKind qk:Dimensionless .
+:out1 a wsem:OutputVariable ;
+    skos:prefLabel "gammaMean" ;
+    wsem:apiVariable "gammaMean" ;
+    skos:definition "mean γ" ;
+    wsem:canonicalUnit unit:UNITLESS ;
+    wsem:quantityKind qk:Dimensionless .
+:out2 a wsem:OutputVariable ;
+    skos:prefLabel "gammaMax" ;
+    wsem:apiVariable "gammaMax" ;
+    skos:definition "max γ" ;
+    wsem:canonicalUnit unit:UNITLESS ;
+    wsem:quantityKind qk:Dimensionless .
+:out3 a wsem:OutputVariable ;
+    skos:prefLabel "gpr" ;
+    wsem:apiVariable "gpr" ;
+    skos:definition "γ passing rate" ;
+    wsem:canonicalUnit unit:PERCENT ;
+    wsem:quantityKind qk:DimensionlessRatio .
+:out4 a wsem:OutputVariable ;
+    skos:prefLabel "rmse" ;
+    wsem:apiVariable "rmse" ;
+    skos:definition "global pixel-wise RMSE" ;
+    wsem:canonicalUnit unit:W-PER-M2 ;
+    wsem:quantityKind qk:Irradiance .
+:out5 a wsem:OutputVariable ;
+    skos:prefLabel "rmseMap" ;
+    wsem:apiVariable "rmseMap" ;
+    skos:definition "RMSE per pixel over time" ;
+    wsem:canonicalUnit unit:W-PER-M2 ;
+    wsem:quantityKind qk:Irradiance .

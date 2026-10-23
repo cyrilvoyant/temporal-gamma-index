@@ -1,0 +1,141 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "wsem": "https://w3id.org/websemantic/ns#"
+  },
+  "@type": "SoftwareSourceCode",
+  "@id": "https://doi.org/10.5281/zenodo.21755936",
+  "name": "The γ-index: tolerance-based validation of spatio-temporal forecast fields (MATLAB)",
+  "description": "Accepts a forecast point when an observation agrees within joint tolerances in space (DTA), time (TTA) and intensity (IDT).",
+  "codeRepository": "https://github.com/cyrilvoyant/temporal-gamma-index",
+  "license": "MIT",
+  "programmingLanguage": "MATLAB",
+  "keywords": [
+    "forecast verification",
+    "gamma index",
+    "spatio-temporal",
+    "satellite irradiance",
+    "double penalty"
+  ],
+  "dateModified": "2026-10-23",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Cyril Voyant",
+      "@id": "https://orcid.org/0000-0003-0242-7377"
+    }
+  ],
+  "citation": {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.1016/j.ijforecast.2026.03.002",
+    "name": "C. Voyant. A tolerance-based framework for spatiotemporal forecast validation using the γ-index. International Journal of Forecasting 42(4) (2026) 1207–1214"
+  },
+  "wsem:declaresParameter": [
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "pred",
+      "description": "forecast map at one time",
+      "valueRequired": true,
+      "unitText": "W/m²",
+      "unitCode": "http://qudt.org/vocab/unit/W-PER-M2"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "meas",
+      "description": "sequence of observed maps",
+      "valueRequired": true,
+      "unitText": "W/m²",
+      "unitCode": "http://qudt.org/vocab/unit/W-PER-M2"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "dta",
+      "description": "spatial tolerance; the article uses one grid spacing (≈ 2 km)",
+      "valueRequired": true,
+      "unitText": "km",
+      "unitCode": "http://qudt.org/vocab/unit/KiloM"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "tta",
+      "description": "temporal tolerance; the article uses 30 min (Δt/2 with interpolation)",
+      "valueRequired": true,
+      "unitText": "min",
+      "unitCode": "http://qudt.org/vocab/unit/MIN"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "idt",
+      "description": "intensity tolerance; the article uses 50 W/m² (about 10 %)",
+      "valueRequired": true,
+      "unitText": "W/m²",
+      "unitCode": "http://qudt.org/vocab/unit/W-PER-M2"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "res_ini, res_end",
+      "description": "pixel size before and after rescaling (km per pixel)",
+      "valueRequired": true,
+      "unitText": "km",
+      "unitCode": "http://qudt.org/vocab/unit/KiloM"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "timestep_ini, timestep_end",
+      "description": "time between images before and after interpolation (hours)",
+      "valueRequired": true,
+      "unitText": "h",
+      "unitCode": "http://qudt.org/vocab/unit/HR"
+    }
+  ],
+  "wsem:declaresOutput": [
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "gammaMap",
+      "description": "minimum γ per pixel",
+      "valueRequired": true,
+      "unitText": "1",
+      "unitCode": "http://qudt.org/vocab/unit/UNITLESS"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "gammaMean",
+      "description": "mean γ",
+      "valueRequired": true,
+      "unitText": "1",
+      "unitCode": "http://qudt.org/vocab/unit/UNITLESS"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "gammaMax",
+      "description": "max γ",
+      "valueRequired": true,
+      "unitText": "1",
+      "unitCode": "http://qudt.org/vocab/unit/UNITLESS"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "gpr",
+      "description": "γ passing rate",
+      "valueRequired": true,
+      "unitText": "%",
+      "unitCode": "http://qudt.org/vocab/unit/PERCENT"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "rmse",
+      "description": "global pixel-wise RMSE",
+      "valueRequired": true,
+      "unitText": "W/m²",
+      "unitCode": "http://qudt.org/vocab/unit/W-PER-M2"
+    },
+    {
+      "@type": "PropertyValueSpecification",
+      "name": "rmseMap",
+      "description": "RMSE per pixel over time",
+      "valueRequired": true,
+      "unitText": "W/m²",
+      "unitCode": "http://qudt.org/vocab/unit/W-PER-M2"
+    }
+  ]
+}
