@@ -1,115 +1,220 @@
-@prefix wsem: <https://w3id.org/websemantic/ns#> .
+# temporal-gamma-index: WebSemantic, QUDT and schema.org description (generated 2026-10-23; documentation only).
+# The JSON-LD file in this folder is the same graph.
+@prefix : <https://cyrilvoyant.github.io/ontology/temporal-gamma-index#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qk: <http://qudt.org/vocab/quantitykind/> .
 @prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
-@prefix qk: <http://qudt.org/vocab/quantitykind/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix : <https://cyrilvoyant.github.io/ontology/temporal-gamma-index#> .
+@prefix wsem: <https://w3id.org/websemantic/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# Instances of the WebSemantic core vocabulary for temporal-gamma-index (generated 2026-10-23; documentation only).
-
-:software a wsem:Software, schema:SoftwareSourceCode ;
-    schema:name "The γ-index: tolerance-based validation of spatio-temporal forecast fields (MATLAB)" ;
-    schema:codeRepository <https://github.com/cyrilvoyant/temporal-gamma-index> ;
-    wsem:conceptDOI "https://doi.org/10.5281/zenodo.21755936" ;
-    schema:identifier <https://doi.org/10.5281/zenodo.21755936> ;
-    schema:license "MIT" ;
-    schema:programmingLanguage "MATLAB" ;
-    schema:description "Accepts a forecast point when an observation agrees within joint tolerances in space (DTA), time (TTA) and intensity (IDT)." ;
+:software a schema:SoftwareSourceCode,
+        wsem:Software ;
+    dcterms:modified "2026-10-23" ;
+    owl:sameAs <https://doi.org/10.5281/zenodo.21755936> ;
     schema:author <https://orcid.org/0000-0003-0242-7377> ;
     schema:citation <https://doi.org/10.1016/j.ijforecast.2026.03.002> ;
-    wsem:declaresParameter :in0 ;
-    wsem:declaresParameter :in1 ;
-    wsem:declaresParameter :in2 ;
-    wsem:declaresParameter :in3 ;
-    wsem:declaresParameter :in4 ;
-    wsem:declaresParameter :in5 ;
-    wsem:declaresParameter :in6 ;
-    wsem:declaresOutput :out0 ;
-    wsem:declaresOutput :out1 ;
-    wsem:declaresOutput :out2 ;
-    wsem:declaresOutput :out3 ;
-    wsem:declaresOutput :out4 ;
-    wsem:declaresOutput :out5 ;
-    dcterms:modified "2026-10-23" .
+    schema:codeRepository <https://github.com/cyrilvoyant/temporal-gamma-index> ;
+    schema:dateModified "2026-10-23"^^xsd:date ;
+    schema:description "Accepts a forecast point when an observation agrees within joint tolerances in space (DTA), time (TTA) and intensity (IDT)." ;
+    schema:identifier <https://doi.org/10.5281/zenodo.21755936> ;
+    schema:keywords "double penalty",
+        "forecast verification",
+        "gamma index",
+        "satellite irradiance",
+        "spatio-temporal" ;
+    schema:license "MIT" ;
+    schema:name "The γ-index: tolerance-based validation of spatio-temporal forecast fields (MATLAB)" ;
+    schema:programmingLanguage "MATLAB" ;
+    wsem:conceptDOI "https://doi.org/10.5281/zenodo.21755936" ;
+    wsem:declaresOutput :out0,
+        :out1,
+        :out2,
+        :out3,
+        :out4,
+        :out5 ;
+    wsem:declaresParameter :in0,
+        :in1,
+        :in2,
+        :in3,
+        :in4,
+        :in5,
+        :in6 .
 
-<https://orcid.org/0000-0003-0242-7377> a schema:Person ; schema:name "Cyril Voyant" .
-:in0 a wsem:ParameterDefinition ;
-    skos:prefLabel "pred" ;
-    wsem:apiVariable "pred" ;
+:in0 a schema:PropertyValueSpecification,
+        wsem:ParameterDefinition ;
     skos:definition "forecast map at one time" ;
+    skos:prefLabel "pred" ;
+    schema:description "forecast map at one time" ;
+    schema:name "pred" ;
+    schema:unitCode unit:W-PER-M2 ;
+    schema:unitText "W/m²" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "pred" ;
     wsem:canonicalUnit unit:W-PER-M2 ;
     wsem:quantityKind qk:Irradiance .
-:in1 a wsem:ParameterDefinition ;
-    skos:prefLabel "meas" ;
-    wsem:apiVariable "meas" ;
+
+:in1 a schema:PropertyValueSpecification,
+        wsem:ParameterDefinition ;
     skos:definition "sequence of observed maps" ;
+    skos:prefLabel "meas" ;
+    schema:description "sequence of observed maps" ;
+    schema:name "meas" ;
+    schema:unitCode unit:W-PER-M2 ;
+    schema:unitText "W/m²" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "meas" ;
     wsem:canonicalUnit unit:W-PER-M2 ;
     wsem:quantityKind qk:Irradiance .
-:in2 a wsem:ParameterDefinition ;
-    skos:prefLabel "dta" ;
-    wsem:apiVariable "dta" ;
+
+:in2 a schema:PropertyValueSpecification,
+        wsem:ParameterDefinition ;
     skos:definition "spatial tolerance; the article uses one grid spacing (≈ 2 km)" ;
+    skos:prefLabel "dta" ;
+    schema:description "spatial tolerance; the article uses one grid spacing (≈ 2 km)" ;
+    schema:name "dta" ;
+    schema:unitCode unit:KiloM ;
+    schema:unitText "km" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "dta" ;
     wsem:canonicalUnit unit:KiloM ;
     wsem:quantityKind qk:Length .
-:in3 a wsem:ParameterDefinition ;
-    skos:prefLabel "tta" ;
-    wsem:apiVariable "tta" ;
+
+:in3 a schema:PropertyValueSpecification,
+        wsem:ParameterDefinition ;
     skos:definition "temporal tolerance; the article uses 30 min (Δt/2 with interpolation)" ;
+    skos:prefLabel "tta" ;
+    schema:description "temporal tolerance; the article uses 30 min (Δt/2 with interpolation)" ;
+    schema:name "tta" ;
+    schema:unitCode unit:MIN ;
+    schema:unitText "min" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "tta" ;
     wsem:canonicalUnit unit:MIN ;
     wsem:quantityKind qk:Time .
-:in4 a wsem:ParameterDefinition ;
-    skos:prefLabel "idt" ;
-    wsem:apiVariable "idt" ;
+
+:in4 a schema:PropertyValueSpecification,
+        wsem:ParameterDefinition ;
     skos:definition "intensity tolerance; the article uses 50 W/m² (about 10 %)" ;
+    skos:prefLabel "idt" ;
+    schema:description "intensity tolerance; the article uses 50 W/m² (about 10 %)" ;
+    schema:name "idt" ;
+    schema:unitCode unit:W-PER-M2 ;
+    schema:unitText "W/m²" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "idt" ;
     wsem:canonicalUnit unit:W-PER-M2 ;
     wsem:quantityKind qk:Irradiance .
-:in5 a wsem:ParameterDefinition ;
-    skos:prefLabel "res_ini, res_end" ;
-    wsem:apiVariable "res_ini, res_end" ;
+
+:in5 a schema:PropertyValueSpecification,
+        wsem:ParameterDefinition ;
     skos:definition "pixel size before and after rescaling (km per pixel)" ;
+    skos:prefLabel "res_ini, res_end" ;
+    schema:description "pixel size before and after rescaling (km per pixel)" ;
+    schema:name "res_ini, res_end" ;
+    schema:unitCode unit:KiloM ;
+    schema:unitText "km" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "res_ini, res_end" ;
     wsem:canonicalUnit unit:KiloM ;
     wsem:quantityKind qk:Length .
-:in6 a wsem:ParameterDefinition ;
-    skos:prefLabel "timestep_ini, timestep_end" ;
-    wsem:apiVariable "timestep_ini, timestep_end" ;
+
+:in6 a schema:PropertyValueSpecification,
+        wsem:ParameterDefinition ;
     skos:definition "time between images before and after interpolation (hours)" ;
+    skos:prefLabel "timestep_ini, timestep_end" ;
+    schema:description "time between images before and after interpolation (hours)" ;
+    schema:name "timestep_ini, timestep_end" ;
+    schema:unitCode unit:HR ;
+    schema:unitText "h" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "timestep_ini, timestep_end" ;
     wsem:canonicalUnit unit:HR ;
     wsem:quantityKind qk:Time .
-:out0 a wsem:OutputVariable ;
-    skos:prefLabel "gammaMap" ;
-    wsem:apiVariable "gammaMap" ;
+
+:out0 a schema:PropertyValueSpecification,
+        wsem:OutputVariable ;
     skos:definition "minimum γ per pixel" ;
+    skos:prefLabel "gammaMap" ;
+    schema:description "minimum γ per pixel" ;
+    schema:name "gammaMap" ;
+    schema:unitCode unit:UNITLESS ;
+    schema:unitText "1" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "gammaMap" ;
     wsem:canonicalUnit unit:UNITLESS ;
     wsem:quantityKind qk:Dimensionless .
-:out1 a wsem:OutputVariable ;
-    skos:prefLabel "gammaMean" ;
-    wsem:apiVariable "gammaMean" ;
+
+:out1 a schema:PropertyValueSpecification,
+        wsem:OutputVariable ;
     skos:definition "mean γ" ;
+    skos:prefLabel "gammaMean" ;
+    schema:description "mean γ" ;
+    schema:name "gammaMean" ;
+    schema:unitCode unit:UNITLESS ;
+    schema:unitText "1" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "gammaMean" ;
     wsem:canonicalUnit unit:UNITLESS ;
     wsem:quantityKind qk:Dimensionless .
-:out2 a wsem:OutputVariable ;
-    skos:prefLabel "gammaMax" ;
-    wsem:apiVariable "gammaMax" ;
+
+:out2 a schema:PropertyValueSpecification,
+        wsem:OutputVariable ;
     skos:definition "max γ" ;
+    skos:prefLabel "gammaMax" ;
+    schema:description "max γ" ;
+    schema:name "gammaMax" ;
+    schema:unitCode unit:UNITLESS ;
+    schema:unitText "1" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "gammaMax" ;
     wsem:canonicalUnit unit:UNITLESS ;
     wsem:quantityKind qk:Dimensionless .
-:out3 a wsem:OutputVariable ;
-    skos:prefLabel "gpr" ;
-    wsem:apiVariable "gpr" ;
+
+:out3 a schema:PropertyValueSpecification,
+        wsem:OutputVariable ;
     skos:definition "γ passing rate" ;
+    skos:prefLabel "gpr" ;
+    schema:description "γ passing rate" ;
+    schema:name "gpr" ;
+    schema:unitCode unit:PERCENT ;
+    schema:unitText "%" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "gpr" ;
     wsem:canonicalUnit unit:PERCENT ;
     wsem:quantityKind qk:DimensionlessRatio .
-:out4 a wsem:OutputVariable ;
-    skos:prefLabel "rmse" ;
-    wsem:apiVariable "rmse" ;
+
+:out4 a schema:PropertyValueSpecification,
+        wsem:OutputVariable ;
     skos:definition "global pixel-wise RMSE" ;
+    skos:prefLabel "rmse" ;
+    schema:description "global pixel-wise RMSE" ;
+    schema:name "rmse" ;
+    schema:unitCode unit:W-PER-M2 ;
+    schema:unitText "W/m²" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "rmse" ;
     wsem:canonicalUnit unit:W-PER-M2 ;
     wsem:quantityKind qk:Irradiance .
-:out5 a wsem:OutputVariable ;
-    skos:prefLabel "rmseMap" ;
-    wsem:apiVariable "rmseMap" ;
+
+:out5 a schema:PropertyValueSpecification,
+        wsem:OutputVariable ;
     skos:definition "RMSE per pixel over time" ;
+    skos:prefLabel "rmseMap" ;
+    schema:description "RMSE per pixel over time" ;
+    schema:name "rmseMap" ;
+    schema:unitCode unit:W-PER-M2 ;
+    schema:unitText "W/m²" ;
+    schema:valueRequired true ;
+    wsem:apiVariable "rmseMap" ;
     wsem:canonicalUnit unit:W-PER-M2 ;
     wsem:quantityKind qk:Irradiance .
+
+<https://doi.org/10.1016/j.ijforecast.2026.03.002> a schema:ScholarlyArticle ;
+    schema:name "C. Voyant. A tolerance-based framework for spatiotemporal forecast validation using the γ-index. International Journal of Forecasting 42(4) (2026) 1207–1214" .
+
+<https://orcid.org/0000-0003-0242-7377> a schema:Person ;
+    schema:name "Cyril Voyant" .
+
