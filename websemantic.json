@@ -181,5 +181,7 @@
     "The temporal component was not fully exploited in the article (validation mostly spatial); DTA = 1 pixel suits 1 to 5 km grids.",
     "The tolerances are application choices to report with the results."
   ],
-  "full_contract": null
+  "full_contract": null,
+  "integration_status": "documentation_only_not_registered_with_websemantic",
+  "execution_notice": "This descriptor documents the software. It is not a registered WebSemantic adapter, an executable API, or evidence that the full scientific workflow has been validated."
 }
